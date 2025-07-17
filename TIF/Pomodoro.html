@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temporizador Pomodoro</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --pomodoro: white;
+            --shortBreak: #FDFDFD;
+            --longBreak: #F5F5F5;
+            --bg: #3A86FF;
+            --text: #f8fafc;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            transition: background-color 0.3s ease;
+        }
+
+        .progress-ring__circle {
+            transition: stroke-dashoffset 0.1s linear;
+            transform: rotate(-90deg);
+            transform-origin: 50% 50%;
+        }
+
+        .mode-btn.active {
+            background-color: black !important;
+            color: var(--bg) !important;
+        }
+
+        body {
+            background-color: var(--bg);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            transition: background-color 0.3s ease;
+        }
+
+        .progress-ring__circle {
+            transition: stroke-dashoffset 0.1s linear;
+            transform: rotate(-90deg);
+            transform-origin: 50% 50%;
+        }
+
+    </style>
+</head>
+
+<body class="min-h-screen flex flex-col items-center justify-center p-4">
+    <div class="text-center container" style="width: 380px;">
+        <h1 class="text-4xl font-bold mb-8" style="margin-top: -19px;">Técnica Pomodoro</h1>
+
+        <div class="btn-group mb-5 w-100 bg-dark p-1 rounded-pill" role="group">
+            <button onclick="switchMode('pomodoro')" id="pomodoro-btn" class="mode-btn btn rounded-pill py-2 active">
+                Pomodoro
+            </button>
+            <button onclick="switchMode('shortBreak')" id="shortBreak-btn" class="mode-btn btn rounded-pill py-2">
+                Descanso Corto
+            </button>
+            <button onclick="switchMode('longBreak')" id="longBreak-btn" class="mode-btn btn rounded-pill py-2">
+                Descanso Largo
+            </button>
+        </div>
+
+        <div class="position-relative mb-2" style="margin-top: -40px;">
+            <svg class="w-64 h-64 mx-auto" viewBox=" 1 1 100 100">
+                <circle cx="50" cy="39" r="35" stroke="rgba(248, 250, 252, 0.1)" stroke-width="6" fill="none" />
+                <circle cx="50" cy="39" r="35" id="progress-ring" class="progress-ring__circe"
+                        stroke="currentColor" stroke-width="6" stroke-linecap="round" fill="none"
+                        stroke-dasharray="282.743" stroke-dashoffset="0" />
+            </svg>
+            <div class="absolute inset-0 flex flex-col items-center  justify-center">
+                <div class="text-5xl font-bold mb-1" style="margin-top: -90px;" id="time-left">25:00</div>
+                <button id="start-pause-btn" onclick="toggleTimer()" class="btn btn-light px-4 py-2 rounded-pill mt-0">
+                    Iniciar
+                </button>
+            </div>
+        </div>
+
+        <div class="flex justify-between items-center " style="margin-top: -10px;">
+            <div class="text-sm">
+                <span id="session-type">Modo:</span>
+                <span id="current-mode" class="font-medium">Pomodoro</span>
+            </div>
+            <div class="text-sm">
+                <span class="pr-1">#</span>
+                <span id="pomodoro-count" class="font-medium">0</span>
+            </div>
+            <button onclick="resetTimer()" class="text-sm px-4 py-2 rounded-full bg-slate-700">
+                Reiniciar
+            </button>
+        </div>
+    </div>
+
+    <div class="mt-12 text-center text-sm text-slate-400" >
+        <p>Usa la técnica Pomodoro para mejorar tu productividad:</p>
+    </div>
+    <div class="mt-12 text-center "   style="margin-top: -15px;">
+        <p>25 minutos de trabajo intenso + 5 minutos de descanso</p>
+    </div>
+    <script src="js/pomodoro.js"></script>
+
+
+</body>
+
+</html>
